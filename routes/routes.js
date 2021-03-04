@@ -5,9 +5,9 @@ const Todo = require("../models/model");
 
 // routes will be here....
 router.get("/", async(req, res) => {
-    const allTodo = await Todo.find();
-    res.render("../views/index.ejs", {todo: allTodo})
-    console.log(allTodo)
+    const allTodos = await Todo.find();
+    res.render("../views/index.ejs", {data: allTodos})
+    console.log(allTodos)
 })
 
 
@@ -15,7 +15,6 @@ router.get("/", async(req, res) => {
 router.post("/add/todo", (req, res) => {
     const  todo  = req.body;
     const newTodo = new Todo( todo );
-
     // save the todo
     newTodo.save()
       .then(() => {
@@ -28,7 +27,7 @@ router.post("/add/todo", (req, res) => {
   router.get("/edit/todo/:_id", async(req, res) => {
 
     const oneTodo = await Todo.findOne(req.params)
-    res.render("../views/update.ejs", {todo: oneTodo});
+    res.render("../views/update.ejs", {data: oneTodo});
     console.log(oneTodo)
   });
 
@@ -46,8 +45,8 @@ router.post("/add/todo", (req, res) => {
   });
 
   router.get("/delete/todo/:_id", (req, res) => {
-    const  _id  = req.params;
-    Todo.deleteOne( _id )
+    const  id  = req.params;
+    Todo.deleteOne( id )
       .then(() => {
         console.log("Deleted Todo Successfully!");
         res.redirect("/");
@@ -55,7 +54,9 @@ router.post("/add/todo", (req, res) => {
       .catch((err) => console.log(err));
   });
 
-/*authentification*/
+  module.exports = router;
+
+/*authentification
 
   router.get('/',  (req, res) => {
     res.render('index');
@@ -79,6 +80,6 @@ router.post("/add/todo", (req, res) => {
 
   router.get('/signout', (req, res, next) => {
     res.end();
-  });
+  });*/
 
-module.exports = router;
+
