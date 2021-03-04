@@ -10,11 +10,9 @@ router.get("/", async(req, res) => {
     console.log(allTodos)
 })
 
-
-//module.exports = router;
 router.post("/add/todo", (req, res) => {
     const  todo  = req.body;
-    const newTodo = new Todo( todo );
+    const newTodo = Todo( todo );
     // save the todo
     newTodo.save()
       .then(() => {
@@ -56,30 +54,6 @@ router.post("/add/todo", (req, res) => {
 
   module.exports = router;
 
-/*authentification
 
-  router.get('/',  (req, res) => {
-    res.render('index');
-  });
-
-  router.get('/new', (req, res, next) => {
-    res.render('../views/signup.ejs');
-  });
-
-  router.post('/', (req, res, next)=>{
-    res.end();
-  });
-
-  router.get('/signin/form', (req, res, next) => {
-    res.end();
-  });
-
-  router.post('/signin', (req, res, next) => {
-    res.end();
-  });
-
-  router.get('/signout', (req, res, next) => {
-    res.end();
-  });*/
 
 
