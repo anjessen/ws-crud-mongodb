@@ -23,13 +23,16 @@
 
     <ul class="list-group my-5">
         <% data.forEach(data => { %>
-    <div class="d-flex w-100">
-        <li class="list-group-item align-items-start w-100 h-10"><%= data.todo %>
-            <span href="/edit/todo/<%= data._id%>" class="btn btn-primary btn-md ">Update</span>
-            <span href="/edit/todo/<%= data._id%>" class="btn btn-primary btn-md ">Update</span>
+    <!--<div class="d-flex w-100">-->
+        <li class="list-group-item align-items-start w-100 d-flex">
+            <div class="col-10">
+                <%= data.todo %>
+            </div>
+            <div>
+                <a href="/edit/todo/<%= data._id%>" class="btn btn-primary btn-md  mx-2">Update</a>
+                <a href="/delete/todo/<%= data._id%>" class="btn btn-danger btn-md ">Delete</a>
+            </div>
         </li> 
-    </div>
-    ©
         <% }) %>
     </ul>
 </div>
