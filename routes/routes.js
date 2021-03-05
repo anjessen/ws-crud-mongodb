@@ -19,7 +19,9 @@ router.post("/add/todo", (req, res) => {
         console.log("Successfully added todo!");
         res.redirect("/");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+      })
   })
 
   router.get("/edit/todo/:_id", async(req, res) => {
@@ -39,7 +41,6 @@ router.post("/add/todo", (req, res) => {
     .catch(err => {
       console.log("error")
     });
-
   });
 
   router.get("/delete/todo/:_id", (req, res) => {
